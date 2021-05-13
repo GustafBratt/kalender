@@ -14,10 +14,10 @@ public class KalenderConfig {
     private List<String> rodaDagar;
 
     public List<String> getRodaDagar() {
-        return rodaDagar;
+        return Collections.unmodifiableList(rodaDagar);
     }
 
-    public void setRodaDagar(List<String> fileTypes) {
-        this.rodaDagar = fileTypes;
+    public void setRodaDagar(List<String> rodaDagar) {
+        this.rodaDagar = rodaDagar;
     }
 }
