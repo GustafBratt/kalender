@@ -4,7 +4,6 @@ import io.restassured.http.ContentType;
 import io.restassured.module.mockmvc.RestAssuredMockMvc;
 import io.restassured.module.mockmvc.response.MockMvcResponse;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -13,9 +12,10 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.context.WebApplicationContext;
-import static io.restassured.module.mockmvc.RestAssuredMockMvc.*;
+
+import static io.restassured.module.mockmvc.RestAssuredMockMvc.webAppContextSetup;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 @AutoConfigureMockMvc
@@ -45,8 +45,8 @@ public class KalenderApplicationTests {
 
 		System.out.println("=======");
 		System.out.println(response.asString());
-		Assertions.assertEquals(200, response.statusCode());
-		Assertions.assertTrue(response.asString().contains("2021-05-14"));
+		assertEquals(200, response.statusCode());
+		assertTrue(response.asString().contains("2021-05-14"));
 	}
 
 	@Test
@@ -62,7 +62,7 @@ public class KalenderApplicationTests {
 
 		System.out.println("=======");
 		System.out.println(response.asString());
-		Assertions.assertEquals(400, response.statusCode());
+		assertEquals(400, response.statusCode());
 	}
 
 }
